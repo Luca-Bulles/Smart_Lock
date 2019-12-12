@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
+using System.Threading;
 
 namespace SmartLock
 {
@@ -22,28 +23,13 @@ namespace SmartLock
             InitializeComponent();
             Show_Slot1(false);
             btnTerug.Visible = false;
+            btnVeranderNaamSlot.Visible = false;
+            btnSlotToevoegen.Visible = false;
+            Show_Slotbeheer(false);
+            Show_VeranderNaam(false);
 
         }
-        //Nieuwe gegevens gebruiker verwerken (Regristratie)
-        private void BtnRegisterGereed_Click(object sender, EventArgs e)
-        {
-            bool controle = Password_Control();
-            if (controle == true)
-            {
-                Client_Register();
-            }
-            else
-            {
-                MessageBox.Show("Wachtwoorden komen niet overeen! Probeer het opnieuw!");
-            }
-        }
 
-        private void BtnEnter_Click(object sender, EventArgs e)
-        {
-            Status_Locked();
-            Client_Login();
-
-        }
         //Controle of de wachtwoorden overeenkomen
         bool Password_Control()
         {
@@ -63,21 +49,11 @@ namespace SmartLock
 
         }
 
-        //Functie waar de socket in gemaakt wordt
-        void Socket_Define()
-        {
-            //Maken van de Socket
-            Sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-
-            //Verbinding vaststellen
-            IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse("192.168.200.53"), 10000);
-            Sock.Connect(endPoint);
-
-        }
+        //----------------------------------------------------------------------- Begin Weergave functies ----------------------------------------------------------------------
         //wel of niet tonen van de login pagina
         void Show_Login(bool state)
         {
-            button1.Visible = state;
+            pnlLogin.Visible = state;
             btnEnter.Visible = state;
             btnTerug.Visible = state;
             lblGebruikersnaam.Visible = state;
@@ -98,7 +74,7 @@ namespace SmartLock
         //wel of niet tonen van het regristratiescherm
         void Show_Register(bool state)
         {
-            btnRegister.Visible = state;
+            pnlRegister.Visible = state;
             btnInloggen.Visible = state;
             btnRegisterGereed.Visible = state;
             tbNieuweGebruikersnaam.Visible = state;
@@ -115,6 +91,39 @@ namespace SmartLock
 
         }
 
+        //Tonen van slotbeheer
+        void Show_Slotbeheer(bool state)
+        {
+            pnlSlotbeheer.Visible = state;
+            btnNaamSlot1.Visible = state;
+            btnNaamSlot2.Visible = state;
+            btnNaamSlot3.Visible = state;
+            btnNaamSlot4.Visible = state;
+            btnNaamSlot5.Visible = state;
+            btnNaamSlot6.Visible = state;
+            lblHierNaamSlotaanpassen.Visible = state;
+        }
+
+        //tonen van het verander van naam scherm
+        void Show_VeranderNaam(bool state)
+        {
+            pnlVeranderNaam.Visible = state;
+            lblVoerNaamSlotIn.Visible = state;
+            tbVeranderNaam.Visible = state;
+        }
+
+        //----------------------------------------------------------------------- Client Server Communicatie ----------------------------------------------------------------------
+        //Functie waar de socket in gemaakt wordt
+        void Socket_Define()
+        {
+            //Maken van de Socket
+            Sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+            //Verbinding vaststellen
+            IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse("145.93.89.19"), 10000);
+            Sock.Connect(endPoint);
+
+        }
         //Registratie
         void Client_Register()
         {
@@ -153,6 +162,7 @@ namespace SmartLock
                 MessageBox.Show("Wachtwoorden komen niet overeen, probeer het opnieuw!");
             }
         }
+
         //Login bestaande gebruiker
         void Client_Login()
         {
@@ -175,51 +185,54 @@ namespace SmartLock
                 Show_Register(false);
                 Show_Login(false);
                 Show_Slot1(true);
+                btnVeranderNaamSlot.Visible = true;
+                btnSlotToevoegen.Visible = true;
                 State_slot1();
+
+                
+                Thread thread = new Thread(Response_server);
+                thread.IsBackground = true;
+                Control.CheckForIllegalCrossThreadCalls = false;
+                thread.Start();
+                
             }
             else if (message == "LOGIN FAILED")
             {
                 MessageBox.Show("Login failed");
                 Show_Login(true);
                 Sock.Close();
+            }
+        }
 
-            }
-        }
-        //Toon groen slot
-        void Status_Locked()
+        //Constant wachten op reactie server, voor als iemand anders het slot opent of sluit
+        void Response_server()
         {
-            pbSlot1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbSlot1.Image = Image.FromFile("D:\\School\\Fontys\\Semester 1\\Software\\Verdieping\\Proftaak\\Afbeeldingen_Software\\Locked.jpg");
-        }
-        //Toon het rode slot
-        void Status_Unlocked()
-        {
-            pbSlot1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbSlot1.Image = Image.FromFile("D:\\School\\Fontys\\Semester 1\\Software\\Verdieping\\Proftaak\\Afbeeldingen_Software\\Unlocked.jpg");
-        }
-        //Bevestiging van het openen van het slot
-        private void PbSlot1_Click(object sender, EventArgs e)
-        {
-            if (state == "LOCKED")
+            try
             {
-                Unlock_Slot1();
+                while (true)
+                {
+                    //bericht ontvangen van de server
+                    byte[] receiveResponse = new byte[1024];
+                    int recRes = Sock.Receive(receiveResponse, 0, receiveResponse.Length, 0);
+
+                    Array.Resize(ref receiveResponse, recRes);
+                    string response = Encoding.Default.GetString(receiveResponse);
+
+                    if (response == "LOCKED")
+                    {
+                        MessageBox.Show("Slot is gesloten");
+                        Status_Locked();
+                    }
+                    else if (response == "UNLOCKED")
+                    {
+                        MessageBox.Show("Slot is geopend");
+                        Status_Unlocked();
+                    }
+                }
             }
-            else if (state == "UNLOCKED")
-            {
-                Lock_Slot1();
-            }
-        }
-        //Terug naar het begin
-        private void BtnTerug_Click(object sender, EventArgs e)
-        {
-            Show_Register(true);
-            Show_Login(false);
-        }
-        //Gebruiker ziet nu de inlog pagina als hij al een account heeft gemaakt
-        private void BtnInloggen_Click(object sender, EventArgs e)
-        {
-            Show_Register(false);
-            Show_Login(true);
+            //Exceptionhandling als de connectie verbreekt
+            catch (SocketException) { }
+
         }
 
         //State opvragen van het slot bij de server
@@ -296,6 +309,94 @@ namespace SmartLock
                 Status_Unlocked();
             }
         }
-        
+
+        //----------------------------------------------------------------------- Weergave slot ------------------------------------------------------------------------------
+        //Toon groen slot
+        void Status_Locked()
+        {
+            pbSlot1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbSlot1.Image = Image.FromFile("D:\\School\\Fontys\\Semester 1\\Software\\Verdieping\\Proftaak\\Afbeeldingen_Software\\Locked.jpg");
+        }
+        //Toon het rode slot
+        void Status_Unlocked()
+        {
+            pbSlot1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbSlot1.Image = Image.FromFile("D:\\School\\Fontys\\Semester 1\\Software\\Verdieping\\Proftaak\\Afbeeldingen_Software\\Unlocked.jpg");
+        }
+
+        //----------------------------------------------------------------------- Begin klik functies ----------------------------------------------------------------------
+        //Bevestiging van het openen van het slot
+        private void PbSlot1_Click(object sender, EventArgs e)
+        {
+            if (state == "LOCKED")
+            {
+                Unlock_Slot1();
+            }
+            else if (state == "UNLOCKED")
+            {
+                Lock_Slot1();
+            }
+        }
+        //Nieuwe gegevens gebruiker verwerken (Regristratie)
+        private void BtnRegisterGereed_Click(object sender, EventArgs e)
+        {
+            bool controle = Password_Control();
+            if (controle == true)
+            {
+                Client_Register();
+            }
+            else
+            {
+                MessageBox.Show("Wachtwoorden komen niet overeen! Probeer het opnieuw!");
+            }
+        }
+        //als de gebruiker op enter klikt (login pagina)
+        private void BtnEnter_Click(object sender, EventArgs e)
+        {
+            Status_Locked();
+            Client_Login();
+
+        }
+
+        //Terug naar het begin
+        private void BtnTerug_Click(object sender, EventArgs e)
+        {
+            Show_Register(true);
+            Show_Login(false);
+        }
+        //Gebruiker ziet nu de inlog pagina als hij al een account heeft gemaakt
+        private void BtnInloggen_Click(object sender, EventArgs e)
+        {
+            Show_Register(false);
+            Show_Login(true);
+        }
+        //Naam van het slot aanpassen - nog niet volledig
+        private void BtnVeranderNaamSlot_Click(object sender, EventArgs e)
+        {
+            Show_Slotbeheer(true);
+            Show_Login(false);
+            Show_Register(false);
+        }
+
+        //Klikken op slot 1 voor de naam te veranderen
+        private void BtnNaamSlot1_Click(object sender, EventArgs e)
+        {
+            Show_VeranderNaam(true);
+        }
+
+        private void BtnNieuweNaamOpslaan_Click(object sender, EventArgs e)
+        {
+            lblSlot1.Text = tbVeranderNaam.Text;
+        }
+        //Sluiten van het scherm om het wachtwoord te wijzigen
+        private void BtnCloseNieuweNaam_Click(object sender, EventArgs e)
+        {
+            Show_VeranderNaam(false);
+        }
+        //Sluiten van het slotbeheer scherm 
+        private void BtnCloseVeranderNaam_Click(object sender, EventArgs e)
+        {
+            Show_Slotbeheer(false);
+        }
     }
 }
