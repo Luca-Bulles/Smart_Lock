@@ -222,7 +222,6 @@ namespace SmartLock
             }
             //Exceptionhandling als de connectie verbreekt
             catch (SocketException) { }
-
         }
 
         //State opvragen van het slot bij de server
@@ -306,12 +305,16 @@ namespace SmartLock
             }
         }
 
-        void Change_name()
+        void Change_name(string slotNaam)
         {
             //bericht naar de server sturen
-            string msg = "CHANGENAME" + lblSlot1.Text;
+            string msg = "CHANGE NAME";
             byte[] sendBuffer = Encoding.Default.GetBytes(msg);
             Sock.Send(sendBuffer);
+
+            string lockname = lblSlot1.Text;
+            byte[] nameBuffer = Encoding.Default.GetBytes(lockname);
+            Sock.Send(nameBuffer);
 
             //bericht ontvangen van de server
             byte[] receiveBuffer = new byte[1024];
@@ -324,6 +327,8 @@ namespace SmartLock
             if (message == "CHANGE SUCCEEDED")
             {
                 MessageBox.Show("Naam is gewijzigd");
+                lblSlot1.Text = slotNaam;
+                
 
             }
             else if (message == "CHANGE FAILED")
@@ -408,8 +413,8 @@ namespace SmartLock
 
         private void BtnNieuweNaamOpslaan_Click(object sender, EventArgs e)
         {
-            lblSlot1.Text = tbVeranderNaam.Text;
-            //Change_name();
+            string slotNaam = tbVeranderNaam.Text;
+            Change_name(slotNaam);
         }
         //Sluiten van het scherm om het wachtwoord te wijzigen
         private void BtnCloseNieuweNaam_Click(object sender, EventArgs e)
