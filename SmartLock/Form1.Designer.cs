@@ -72,12 +72,26 @@
             this.tbVeranderNaam = new System.Windows.Forms.TextBox();
             this.lblVoerNaamSlotIn = new System.Windows.Forms.Label();
             this.btnSlotToevoegen = new System.Windows.Forms.Button();
+            this.pnlSlotToevoegen = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblExtraSlot1 = new System.Windows.Forms.Label();
+            this.btnExtraSlot6 = new System.Windows.Forms.Button();
+            this.btnExtraSlot5 = new System.Windows.Forms.Button();
+            this.btnExtraSlot4 = new System.Windows.Forms.Button();
+            this.btnExtraSlot3 = new System.Windows.Forms.Button();
+            this.btnExtraSlot2 = new System.Windows.Forms.Button();
+            this.btnExtraSlot1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlot1)).BeginInit();
             this.pnlSlotbeheer.SuspendLayout();
             this.pnlRegister.SuspendLayout();
             this.pnlLogin.SuspendLayout();
             this.pnlVeranderNaam.SuspendLayout();
+            this.pnlSlotToevoegen.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblWelkom
@@ -165,9 +179,9 @@
             this.lblSlot1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSlot1.Location = new System.Drawing.Point(131, 251);
             this.lblSlot1.Name = "lblSlot1";
-            this.lblSlot1.Size = new System.Drawing.Size(87, 29);
+            this.lblSlot1.Size = new System.Drawing.Size(80, 29);
             this.lblSlot1.TabIndex = 11;
-            this.lblSlot1.Text = "Slot 1:";
+            this.lblSlot1.Text = "Slot 1";
             // 
             // pbSlot1
             // 
@@ -521,6 +535,143 @@
             this.btnSlotToevoegen.TabIndex = 42;
             this.btnSlotToevoegen.Text = "Slot Toevoegen";
             this.btnSlotToevoegen.UseVisualStyleBackColor = false;
+            this.btnSlotToevoegen.Click += new System.EventHandler(this.BtnSlotToevoegen_Click);
+            // 
+            // pnlSlotToevoegen
+            // 
+            this.pnlSlotToevoegen.Controls.Add(this.label5);
+            this.pnlSlotToevoegen.Controls.Add(this.label4);
+            this.pnlSlotToevoegen.Controls.Add(this.label3);
+            this.pnlSlotToevoegen.Controls.Add(this.label2);
+            this.pnlSlotToevoegen.Controls.Add(this.label1);
+            this.pnlSlotToevoegen.Controls.Add(this.lblExtraSlot1);
+            this.pnlSlotToevoegen.Controls.Add(this.btnExtraSlot6);
+            this.pnlSlotToevoegen.Controls.Add(this.btnExtraSlot5);
+            this.pnlSlotToevoegen.Controls.Add(this.btnExtraSlot4);
+            this.pnlSlotToevoegen.Controls.Add(this.btnExtraSlot3);
+            this.pnlSlotToevoegen.Controls.Add(this.btnExtraSlot2);
+            this.pnlSlotToevoegen.Controls.Add(this.btnExtraSlot1);
+            this.pnlSlotToevoegen.Location = new System.Drawing.Point(478, 106);
+            this.pnlSlotToevoegen.Name = "pnlSlotToevoegen";
+            this.pnlSlotToevoegen.Size = new System.Drawing.Size(906, 456);
+            this.pnlSlotToevoegen.TabIndex = 43;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(664, 81);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(58, 20);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Slot 3";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(155, 278);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(58, 20);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Slot 4";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(406, 279);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(58, 20);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Slot 5";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(664, 279);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 20);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Slot 6";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(406, 81);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 20);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Slot 2";
+            // 
+            // lblExtraSlot1
+            // 
+            this.lblExtraSlot1.AutoSize = true;
+            this.lblExtraSlot1.Location = new System.Drawing.Point(155, 82);
+            this.lblExtraSlot1.Name = "lblExtraSlot1";
+            this.lblExtraSlot1.Size = new System.Drawing.Size(58, 20);
+            this.lblExtraSlot1.TabIndex = 6;
+            this.lblExtraSlot1.Text = "Slot 1";
+            // 
+            // btnExtraSlot6
+            // 
+            this.btnExtraSlot6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExtraSlot6.Location = new System.Drawing.Point(617, 302);
+            this.btnExtraSlot6.Name = "btnExtraSlot6";
+            this.btnExtraSlot6.Size = new System.Drawing.Size(150, 150);
+            this.btnExtraSlot6.TabIndex = 5;
+            this.btnExtraSlot6.Text = "Beschikbaar";
+            this.btnExtraSlot6.UseVisualStyleBackColor = true;
+            // 
+            // btnExtraSlot5
+            // 
+            this.btnExtraSlot5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExtraSlot5.Location = new System.Drawing.Point(364, 302);
+            this.btnExtraSlot5.Name = "btnExtraSlot5";
+            this.btnExtraSlot5.Size = new System.Drawing.Size(150, 150);
+            this.btnExtraSlot5.TabIndex = 4;
+            this.btnExtraSlot5.Text = "Beschikbaar";
+            this.btnExtraSlot5.UseVisualStyleBackColor = true;
+            // 
+            // btnExtraSlot4
+            // 
+            this.btnExtraSlot4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExtraSlot4.Location = new System.Drawing.Point(105, 302);
+            this.btnExtraSlot4.Name = "btnExtraSlot4";
+            this.btnExtraSlot4.Size = new System.Drawing.Size(150, 150);
+            this.btnExtraSlot4.TabIndex = 3;
+            this.btnExtraSlot4.Text = "Beschikbaar";
+            this.btnExtraSlot4.UseVisualStyleBackColor = true;
+            // 
+            // btnExtraSlot3
+            // 
+            this.btnExtraSlot3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExtraSlot3.Location = new System.Drawing.Point(617, 104);
+            this.btnExtraSlot3.Name = "btnExtraSlot3";
+            this.btnExtraSlot3.Size = new System.Drawing.Size(150, 150);
+            this.btnExtraSlot3.TabIndex = 2;
+            this.btnExtraSlot3.Text = "Beschikbaar";
+            this.btnExtraSlot3.UseVisualStyleBackColor = true;
+            // 
+            // btnExtraSlot2
+            // 
+            this.btnExtraSlot2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExtraSlot2.Location = new System.Drawing.Point(364, 104);
+            this.btnExtraSlot2.Name = "btnExtraSlot2";
+            this.btnExtraSlot2.Size = new System.Drawing.Size(150, 150);
+            this.btnExtraSlot2.TabIndex = 1;
+            this.btnExtraSlot2.Text = "Beschikbaar";
+            this.btnExtraSlot2.UseVisualStyleBackColor = true;
+            // 
+            // btnExtraSlot1
+            // 
+            this.btnExtraSlot1.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnExtraSlot1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnExtraSlot1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExtraSlot1.Location = new System.Drawing.Point(105, 105);
+            this.btnExtraSlot1.Name = "btnExtraSlot1";
+            this.btnExtraSlot1.Size = new System.Drawing.Size(150, 150);
+            this.btnExtraSlot1.TabIndex = 0;
+            this.btnExtraSlot1.Text = "Al Toegevoegd";
+            this.btnExtraSlot1.UseVisualStyleBackColor = false;
+            this.btnExtraSlot1.Click += new System.EventHandler(this.BtnExtraSlot1_Click);
             // 
             // Form1
             // 
@@ -528,6 +679,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateGray;
             this.ClientSize = new System.Drawing.Size(1924, 934);
+            this.Controls.Add(this.pnlSlotToevoegen);
             this.Controls.Add(this.btnSlotToevoegen);
             this.Controls.Add(this.pnlVeranderNaam);
             this.Controls.Add(this.pnlLogin);
@@ -551,6 +703,8 @@
             this.pnlLogin.PerformLayout();
             this.pnlVeranderNaam.ResumeLayout(false);
             this.pnlVeranderNaam.PerformLayout();
+            this.pnlSlotToevoegen.ResumeLayout(false);
+            this.pnlSlotToevoegen.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -600,6 +754,19 @@
         private System.Windows.Forms.Button btnCloseNieuweNaam;
         private System.Windows.Forms.Button btnCloseVeranderNaam;
         private System.Windows.Forms.Button btnSlotToevoegen;
+        private System.Windows.Forms.Panel pnlSlotToevoegen;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblExtraSlot1;
+        private System.Windows.Forms.Button btnExtraSlot6;
+        private System.Windows.Forms.Button btnExtraSlot5;
+        private System.Windows.Forms.Button btnExtraSlot4;
+        private System.Windows.Forms.Button btnExtraSlot3;
+        private System.Windows.Forms.Button btnExtraSlot2;
+        private System.Windows.Forms.Button btnExtraSlot1;
     }
 }
 
