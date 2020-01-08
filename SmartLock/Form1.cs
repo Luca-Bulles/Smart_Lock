@@ -28,6 +28,13 @@ namespace SmartLock
             Show_Slotbeheer(false);
             Show_VeranderNaam(false);
             pnlSlotToevoegen.Visible = false;
+
+            //tijdelijk verbergen van de extra sloten
+            Show_Slot2(false);
+            Show_Slot3(false);
+            Show_Slot4(false);
+            Show_Slot5(false);
+            Show_Slot6(false);
         }
 
         //Controle of de wachtwoorden overeenkomen
@@ -68,6 +75,31 @@ namespace SmartLock
         {
             pbSlot1.Visible = state;
             lblSlot1.Visible = state;
+        }
+        void Show_Slot2(bool state)
+        {
+            pbSlot2.Visible = state;
+            lblSlot2.Visible = state;
+        }
+        void Show_Slot3(bool state)
+        {
+            pbSlot3.Visible = state;
+            lblSlot3.Visible = state;
+        }
+        void Show_Slot4(bool state)
+        {
+            pbSlot4.Visible = state;
+            lblSlot4.Visible = state;
+        }
+        void Show_Slot5(bool state)
+        {
+            pbSlot5.Visible = state;
+            lblSlot5.Visible = state;
+        }
+        void Show_Slot6(bool state)
+        {
+            pbSlot6.Visible = state;
+            lblSlot6.Visible = state;
         }
 
         //wel of niet tonen van het regristratiescherm
@@ -244,6 +276,7 @@ namespace SmartLock
             Array.Resize(ref receiveBuffer, rec);
             string message = Encoding.Default.GetString(receiveBuffer);
 
+            //Bericht Label
             Array.Resize(ref nameBuffer, recName);
             string nameMessage = Encoding.Default.GetString(nameBuffer);
 
