@@ -18,23 +18,28 @@ namespace SmartLock
         Socket Sock;
         string state;
         Thread thread;
+        List<Slot> slots = new List<Slot>();
+        List<PictureBox> pbslots = new List<PictureBox>();
+        List<Label> lblslots = new List<Label>();
         public Form1()
         {
             InitializeComponent();
-            Show_Slot1(false);
+            Show_Slot0(false);
             btnTerug.Visible = false;
             btnVeranderNaamSlot.Visible = false;
             btnSlotToevoegen.Visible = false;
             Show_Slotbeheer(false);
             Show_VeranderNaam(false);
             pnlSlotToevoegen.Visible = false;
+            Pbslots_List();
+            Lblslots_Lists();
 
             //tijdelijk verbergen van de extra sloten
+            Show_Slot1(false);
             Show_Slot2(false);
             Show_Slot3(false);
             Show_Slot4(false);
             Show_Slot5(false);
-            Show_Slot6(false);
         }
 
         //Controle of de wachtwoorden overeenkomen
@@ -53,7 +58,6 @@ namespace SmartLock
                 juist = true;
                 return juist;
             }
-
         }
 
         //----------------------------------------------------------------------- Begin Weergave functies ----------------------------------------------------------------------------------------------------------
@@ -71,6 +75,11 @@ namespace SmartLock
             tbWachtwoord.Visible = state;
         }
         //wel of niet tonen van het slot
+        void Show_Slot0(bool state)
+        {
+            pbSlot0.Visible = state;
+            lblSlot0.Visible = state;
+        }
         void Show_Slot1(bool state)
         {
             pbSlot1.Visible = state;
@@ -95,11 +104,6 @@ namespace SmartLock
         {
             pbSlot5.Visible = state;
             lblSlot5.Visible = state;
-        }
-        void Show_Slot6(bool state)
-        {
-            pbSlot6.Visible = state;
-            lblSlot6.Visible = state;
         }
 
         //wel of niet tonen van het regristratiescherm
@@ -150,7 +154,7 @@ namespace SmartLock
             Sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
             //Verbinding vaststellen
-            IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse("145.93.89.94"), 10000);
+            IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse("145.93.89.75"), 10000);
             Sock.Connect(endPoint);
 
         }
@@ -208,24 +212,38 @@ namespace SmartLock
             Array.Resize(ref receiveBuffer, rec);
             string message = Encoding.Default.GetString(receiveBuffer);
 
-            if (message == "LOGIN SUCCEEDED")
+            //Splitten van het bericht van de server met een spatie tussen de berichten
+            string[] words = message.Split(' ');
+
+            if (message == "LOGINSUCCEEDED")
             {
+                int aantalsloten = Int32.Parse(words[1]);
+                Make_Slots(aantalsloten);
                 MessageBox.Show("Login succeeded");
                 Show_Register(false);
                 Show_Login(false);
-                Show_Slot1(true);
+                Show_Slot0(true);
                 btnVeranderNaamSlot.Visible = true;
                 btnSlotToevoegen.Visible = true;
-                State_slot1();
                 Make_thread();
             }
-            else if (message == "LOGIN FAILED")
+            else if (message == "LOGINFAILED")
             {
                 MessageBox.Show("Login failed");
                 Show_Login(true);
                 Sock.Close();
             }
-
+        }
+        //functie om sloten aan te maken
+        void Make_Slots(int aantalsloten)
+        {
+            for (int i = 0; i < aantalsloten; i++)
+            {                
+                Slot slot = new Slot(i.ToString(), Sock);
+                slots.Add(slot);
+                pbslots[i].Visible = true;
+                lblslots[i].Visible = true;
+            }
         }
 
         //Functie die een thread maakt
@@ -245,7 +263,7 @@ namespace SmartLock
                 while (true)
                 {
                     Thread.Sleep(10000);
-                    State_slot1();
+                    //State_slot();
                 }
             }
             //Exceptionhandling als de connectie verbreekt
@@ -253,108 +271,62 @@ namespace SmartLock
         }
 
         //State opvragen van het slot bij de server
-        void State_slot1()
+        void State_slot1(int slotnummer)
         {
-            //bericht naar de server sturen
-            string msg = "STATE";
-            byte[] sendBuffer = Encoding.Default.GetBytes(msg);
-            Sock.Send(sendBuffer);
-
-            //bericht ontvangen van de server (STATE)
-            byte[] receiveBuffer = new byte[1024];
-            int rec = Sock.Receive(receiveBuffer, 0, receiveBuffer.Length, 0);
-
-            //bericht naar de server sturen
-            string comfirm = "CONFIRM";
-            byte[] sendConfirm = Encoding.Default.GetBytes(comfirm);
-            Sock.Send(sendConfirm);
-
-            //bericht ontvangen van de server (LABEL)
-            byte[] nameBuffer = new byte[1024];
-            int recName = Sock.Receive(nameBuffer, 0, nameBuffer.Length, 0);
-
-            Array.Resize(ref receiveBuffer, rec);
-            string message = Encoding.Default.GetString(receiveBuffer);
-
-            //Bericht Label
-            Array.Resize(ref nameBuffer, recName);
-            string nameMessage = Encoding.Default.GetString(nameBuffer);
+            Tuple<String, String> messages = slots[slotnummer].state_slot(Sock);
+            string message = messages.Item1;
+            string nameMessage = messages.Item2;
 
             if (state != message)
             {
-                MessageBox.Show("Status " + lblSlot1.Text + " is gewijzigd.");
+                MessageBox.Show("Status " + lblSlot0.Text + " is gewijzigd.");
             }
             state = message;
 
             if (message == "UNLOCKED")
             {
                 //MessageBox.Show("Slot is geopend");
-                Status_Unlocked();
-
+                Status_Unlocked(slotnummer);
             }
             else if (message == "LOCKED")
             {
                 //MessageBox.Show("Slot is gesloten");
-                Status_Locked();
+                Status_Locked(slotnummer);
             }
-            if (lblSlot1.Text != nameMessage)
+            if (lblSlot0.Text != nameMessage)
             {
-                MessageBox.Show("Naam " + lblSlot1.Text + " is gewijzigd naar: " + nameMessage);
-                lblSlot1.Text = nameMessage;
-            }
-            
+                MessageBox.Show("Naam " + lblSlot0.Text + " is gewijzigd naar: " + nameMessage);
+                lblSlot0.Text = nameMessage;
+            }            
         }
 
         //Slot afsluiten
-        void Lock_Slot1()
+        void Lock_Slot(int slotnummer)
         {
-            //bericht naar de server sturen
-            string msg = "LOCK";
-            byte[] sendBuffer = Encoding.Default.GetBytes(msg);
-            Sock.Send(sendBuffer);
-
-            //bericht ontvangen van de server
-            byte[] receiveBuffer = new byte[1024];
-            int rec = Sock.Receive(receiveBuffer, 0, receiveBuffer.Length, 0);
-
-            Array.Resize(ref receiveBuffer, rec);
-            string message = Encoding.Default.GetString(receiveBuffer);
-            state = message;
-
+            string message = slots[slotnummer].unlock_slot(Sock); 
+            
             if (message == "LOCKED")
             {
                 //MessageBox.Show("Slot is gesloten");
-                Status_Locked();
+                Status_Locked(slotnummer);
             }
-
         }
         //Slot openen
-        void Unlock_Slot1()
+        void Unlock_Slot(int slotnummer)
         {
-            //bericht naar de server sturen
-            string msg = "UNLOCK";
-            byte[] sendBuffer = Encoding.Default.GetBytes(msg);
-            Sock.Send(sendBuffer);
-
-            //bericht ontvangen van de server
-            byte[] receiveBuffer = new byte[1024];
-            int rec = Sock.Receive(receiveBuffer, 0, receiveBuffer.Length, 0);
-
-            Array.Resize(ref receiveBuffer, rec);
-            string message = Encoding.Default.GetString(receiveBuffer);
-            state = message;
+            string message = slots[slotnummer].lock_slot(Sock);
 
             if (message == "UNLOCKED")
             {
                 //MessageBox.Show("Slot is geopend");
-                Status_Unlocked();
+                Status_Unlocked(slotnummer);
             }
         }
 
         void Change_name(string slotNaam)
         {
             //bericht naar de server sturen
-            string msg = "CHANGE NAME";
+            string msg = "CHANGENAME";
             byte[] sendBuffer = Encoding.Default.GetBytes(msg);
             Sock.Send(sendBuffer);
 
@@ -371,7 +343,7 @@ namespace SmartLock
             if (message == "CHANGE SUCCEEDED")
             {
                 MessageBox.Show("Naam is gewijzigd");
-                lblSlot1.Text = slotNaam;
+                lblSlot0.Text = slotNaam;
                 
             }
             else if (message == "CHANGE FAILED")
@@ -395,56 +367,56 @@ namespace SmartLock
 
         //----------------------------------------------------------------------- Weergave slot --------------------------------------------------------------------------------------------------------------------
         //Toon groen slot
-        void Status_Locked()
+        void Status_Locked(int indexnummer)
         {
-            pbSlot1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbSlot1.Image = Image.FromFile("D:\\School\\Fontys\\Semester 1\\Software\\Verdieping\\Proftaak\\Afbeeldingen_Software\\Locked.jpg");
+            pbslots[indexnummer].SizeMode = PictureBoxSizeMode.StretchImage;
+            pbslots[indexnummer].Image = Image.FromFile("D:\\School\\Fontys\\Semester 1\\Software\\Verdieping\\Proftaak\\Afbeeldingen_Software\\Locked.jpg");
         }
         //Toon het rode slot
-        void Status_Unlocked()
+        void Status_Unlocked(int indexnummer)
         {
-            pbSlot1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbSlot1.Image = Image.FromFile("D:\\School\\Fontys\\Semester 1\\Software\\Verdieping\\Proftaak\\Afbeeldingen_Software\\Unlocked.jpg");
-        }
-
-        //Slot 2 toevoegen
-        void Add_Slot2()
-        {
-            //Picturebox is een class die ik gebruikt voor het maken van nieuwe sloten
-            //Slot 2 maken en plaatsen
-            PictureBox imageControl = new PictureBox();
-            imageControl.Width = 235;
-            imageControl.Height = 235;
-            imageControl.Location = new Point(400, 283);
-            Bitmap image = new Bitmap("D:\\School\\Fontys\\Semester 1\\Software\\Verdieping\\Proftaak\\Afbeeldingen_Software\\Locked.jpg");
-            imageControl.SizeMode = PictureBoxSizeMode.StretchImage;
-            imageControl.Image = (Image)image;
-            Controls.Add(imageControl);
-
-            //Label van slot 2 maken en plaatsen
-            Label lblSlot2 = new Label();
-            lblSlot2.Location = new Point(490, 251);
-            lblSlot2.Text = "Slot 2";
-            this.Controls.Add(lblSlot2);
+            
+            pbslots[indexnummer].SizeMode = PictureBoxSizeMode.StretchImage;
+            pbslots[indexnummer].Image = Image.FromFile("D:\\School\\Fontys\\Semester 1\\Software\\Verdieping\\Proftaak\\Afbeeldingen_Software\\Unlocked.jpg");
         }
 
         //Openen of sluiten van slot1
-        void Change_StateSlot1()
+        void Change_StateSlot(int slotnummer)
         {
             if (state == "LOCKED")
             {
-                Unlock_Slot1();
+                Unlock_Slot(slotnummer);
             }
             else if (state == "UNLOCKED")
             {
-                Lock_Slot1();
+                Lock_Slot(slotnummer);
             }
+        }
+
+        void Pbslots_List()
+        {
+            pbslots.Add(pbSlot0);
+            pbslots.Add(pbSlot1);
+            pbslots.Add(pbSlot2);
+            pbslots.Add(pbSlot3);
+            pbslots.Add(pbSlot4);
+            pbslots.Add(pbSlot5);
+        }
+        void Lblslots_Lists()
+        {
+            lblslots.Add(lblSlot0);
+            lblslots.Add(lblSlot1);
+            lblslots.Add(lblSlot2);
+            lblslots.Add(lblSlot3);
+            lblslots.Add(lblSlot4);
+            lblslots.Add(lblSlot5);
         }
         //----------------------------------------------------------------------- Begin klik functies --------------------------------------------------------------------------------------------------------------
         //Bevestiging van het openen van het slot
         private void PbSlot1_Click(object sender, EventArgs e)
         {
-            Change_StateSlot1();
+            Change_StateSlot(1);
+            
         }
         //Nieuwe gegevens gebruiker verwerken (Regristratie)
         private void BtnRegisterGereed_Click(object sender, EventArgs e)
@@ -454,7 +426,6 @@ namespace SmartLock
         //als de gebruiker op enter klikt (login pagina)
         private void BtnEnter_Click(object sender, EventArgs e)
         {
-            Status_Locked();
             Client_Login();
         }
 
@@ -501,7 +472,7 @@ namespace SmartLock
         //Toevoegen van een slot
         private void BtnSlotToevoegen_Click(object sender, EventArgs e)
         {
-            Add_Slot2();
+           // Add_Slot2();
         }
 
         private void BtnExtraSlot1_Click(object sender, EventArgs e)

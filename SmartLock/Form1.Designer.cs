@@ -37,9 +37,9 @@
             this.lblWachtwoord = new System.Windows.Forms.Label();
             this.btnEnter = new System.Windows.Forms.Button();
             this.lblOverzicht = new System.Windows.Forms.Label();
-            this.lblSlot1 = new System.Windows.Forms.Label();
+            this.lblSlot0 = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.pbSlot1 = new System.Windows.Forms.PictureBox();
+            this.pbSlot0 = new System.Windows.Forms.PictureBox();
             this.lblWelkomRegister = new System.Windows.Forms.Label();
             this.lblRegistreerHier = new System.Windows.Forms.Label();
             this.tbNieuweGebruikersnaam = new System.Windows.Forms.TextBox();
@@ -85,28 +85,28 @@
             this.btnExtraSlot3 = new System.Windows.Forms.Button();
             this.btnExtraSlot2 = new System.Windows.Forms.Button();
             this.btnExtraSlot1 = new System.Windows.Forms.Button();
+            this.pbSlot1 = new System.Windows.Forms.PictureBox();
+            this.lblSlot1 = new System.Windows.Forms.Label();
             this.pbSlot2 = new System.Windows.Forms.PictureBox();
             this.lblSlot2 = new System.Windows.Forms.Label();
             this.pbSlot3 = new System.Windows.Forms.PictureBox();
             this.lblSlot3 = new System.Windows.Forms.Label();
             this.pbSlot4 = new System.Windows.Forms.PictureBox();
             this.lblSlot4 = new System.Windows.Forms.Label();
-            this.pbSlot5 = new System.Windows.Forms.PictureBox();
             this.lblSlot5 = new System.Windows.Forms.Label();
-            this.lblSlot6 = new System.Windows.Forms.Label();
-            this.pbSlot6 = new System.Windows.Forms.PictureBox();
+            this.pbSlot5 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbSlot1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSlot0)).BeginInit();
             this.pnlSlotbeheer.SuspendLayout();
             this.pnlRegister.SuspendLayout();
             this.pnlLogin.SuspendLayout();
             this.pnlVeranderNaam.SuspendLayout();
             this.pnlSlotToevoegen.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSlot1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlot2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlot3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlot4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlot5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbSlot6)).BeginInit();
             this.SuspendLayout();
             // 
             // lblWelkom
@@ -187,25 +187,25 @@
             this.lblOverzicht.Text = "Hier ziet u al uw sloten";
             this.lblOverzicht.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // lblSlot1
+            // lblSlot0
             // 
-            this.lblSlot1.AutoSize = true;
-            this.lblSlot1.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.lblSlot1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSlot1.Location = new System.Drawing.Point(131, 251);
-            this.lblSlot1.Name = "lblSlot1";
-            this.lblSlot1.Size = new System.Drawing.Size(80, 29);
-            this.lblSlot1.TabIndex = 11;
-            this.lblSlot1.Text = "Slot 1";
+            this.lblSlot0.AutoSize = true;
+            this.lblSlot0.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.lblSlot0.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSlot0.Location = new System.Drawing.Point(131, 251);
+            this.lblSlot0.Name = "lblSlot0";
+            this.lblSlot0.Size = new System.Drawing.Size(80, 29);
+            this.lblSlot0.TabIndex = 11;
+            this.lblSlot0.Text = "Slot 0";
             // 
-            // pbSlot1
+            // pbSlot0
             // 
-            this.pbSlot1.Location = new System.Drawing.Point(66, 283);
-            this.pbSlot1.Name = "pbSlot1";
-            this.pbSlot1.Size = new System.Drawing.Size(235, 235);
-            this.pbSlot1.TabIndex = 12;
-            this.pbSlot1.TabStop = false;
-            this.pbSlot1.Click += new System.EventHandler(this.PbSlot1_Click);
+            this.pbSlot0.Location = new System.Drawing.Point(66, 283);
+            this.pbSlot0.Name = "pbSlot0";
+            this.pbSlot0.Size = new System.Drawing.Size(235, 235);
+            this.pbSlot0.TabIndex = 12;
+            this.pbSlot0.TabStop = false;
+            this.pbSlot0.Click += new System.EventHandler(this.PbSlot1_Click);
             // 
             // lblWelkomRegister
             // 
@@ -688,12 +688,31 @@
             this.btnExtraSlot1.UseVisualStyleBackColor = false;
             this.btnExtraSlot1.Click += new System.EventHandler(this.BtnExtraSlot1_Click);
             // 
+            // pbSlot1
+            // 
+            this.pbSlot1.Location = new System.Drawing.Point(400, 283);
+            this.pbSlot1.Name = "pbSlot1";
+            this.pbSlot1.Size = new System.Drawing.Size(235, 235);
+            this.pbSlot1.TabIndex = 44;
+            this.pbSlot1.TabStop = false;
+            // 
+            // lblSlot1
+            // 
+            this.lblSlot1.AutoSize = true;
+            this.lblSlot1.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.lblSlot1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSlot1.Location = new System.Drawing.Point(465, 251);
+            this.lblSlot1.Name = "lblSlot1";
+            this.lblSlot1.Size = new System.Drawing.Size(80, 29);
+            this.lblSlot1.TabIndex = 45;
+            this.lblSlot1.Text = "Slot 1";
+            // 
             // pbSlot2
             // 
-            this.pbSlot2.Location = new System.Drawing.Point(400, 283);
+            this.pbSlot2.Location = new System.Drawing.Point(734, 283);
             this.pbSlot2.Name = "pbSlot2";
             this.pbSlot2.Size = new System.Drawing.Size(235, 235);
-            this.pbSlot2.TabIndex = 44;
+            this.pbSlot2.TabIndex = 46;
             this.pbSlot2.TabStop = false;
             // 
             // lblSlot2
@@ -701,18 +720,18 @@
             this.lblSlot2.AutoSize = true;
             this.lblSlot2.BackColor = System.Drawing.Color.DarkSlateGray;
             this.lblSlot2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSlot2.Location = new System.Drawing.Point(465, 251);
+            this.lblSlot2.Location = new System.Drawing.Point(799, 251);
             this.lblSlot2.Name = "lblSlot2";
             this.lblSlot2.Size = new System.Drawing.Size(80, 29);
-            this.lblSlot2.TabIndex = 45;
+            this.lblSlot2.TabIndex = 47;
             this.lblSlot2.Text = "Slot 2";
             // 
             // pbSlot3
             // 
-            this.pbSlot3.Location = new System.Drawing.Point(734, 283);
+            this.pbSlot3.Location = new System.Drawing.Point(66, 611);
             this.pbSlot3.Name = "pbSlot3";
             this.pbSlot3.Size = new System.Drawing.Size(235, 235);
-            this.pbSlot3.TabIndex = 46;
+            this.pbSlot3.TabIndex = 48;
             this.pbSlot3.TabStop = false;
             // 
             // lblSlot3
@@ -720,18 +739,18 @@
             this.lblSlot3.AutoSize = true;
             this.lblSlot3.BackColor = System.Drawing.Color.DarkSlateGray;
             this.lblSlot3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSlot3.Location = new System.Drawing.Point(799, 251);
+            this.lblSlot3.Location = new System.Drawing.Point(131, 579);
             this.lblSlot3.Name = "lblSlot3";
             this.lblSlot3.Size = new System.Drawing.Size(80, 29);
-            this.lblSlot3.TabIndex = 47;
+            this.lblSlot3.TabIndex = 49;
             this.lblSlot3.Text = "Slot 3";
             // 
             // pbSlot4
             // 
-            this.pbSlot4.Location = new System.Drawing.Point(66, 611);
+            this.pbSlot4.Location = new System.Drawing.Point(400, 611);
             this.pbSlot4.Name = "pbSlot4";
             this.pbSlot4.Size = new System.Drawing.Size(235, 235);
-            this.pbSlot4.TabIndex = 48;
+            this.pbSlot4.TabIndex = 50;
             this.pbSlot4.TabStop = false;
             // 
             // lblSlot4
@@ -739,49 +758,30 @@
             this.lblSlot4.AutoSize = true;
             this.lblSlot4.BackColor = System.Drawing.Color.DarkSlateGray;
             this.lblSlot4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSlot4.Location = new System.Drawing.Point(131, 579);
+            this.lblSlot4.Location = new System.Drawing.Point(465, 579);
             this.lblSlot4.Name = "lblSlot4";
             this.lblSlot4.Size = new System.Drawing.Size(80, 29);
-            this.lblSlot4.TabIndex = 49;
+            this.lblSlot4.TabIndex = 51;
             this.lblSlot4.Text = "Slot 4";
-            // 
-            // pbSlot5
-            // 
-            this.pbSlot5.Location = new System.Drawing.Point(400, 611);
-            this.pbSlot5.Name = "pbSlot5";
-            this.pbSlot5.Size = new System.Drawing.Size(235, 235);
-            this.pbSlot5.TabIndex = 50;
-            this.pbSlot5.TabStop = false;
             // 
             // lblSlot5
             // 
             this.lblSlot5.AutoSize = true;
             this.lblSlot5.BackColor = System.Drawing.Color.DarkSlateGray;
             this.lblSlot5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSlot5.Location = new System.Drawing.Point(465, 579);
+            this.lblSlot5.Location = new System.Drawing.Point(799, 579);
             this.lblSlot5.Name = "lblSlot5";
             this.lblSlot5.Size = new System.Drawing.Size(80, 29);
-            this.lblSlot5.TabIndex = 51;
+            this.lblSlot5.TabIndex = 52;
             this.lblSlot5.Text = "Slot 5";
             // 
-            // lblSlot6
+            // pbSlot5
             // 
-            this.lblSlot6.AutoSize = true;
-            this.lblSlot6.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.lblSlot6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSlot6.Location = new System.Drawing.Point(799, 579);
-            this.lblSlot6.Name = "lblSlot6";
-            this.lblSlot6.Size = new System.Drawing.Size(80, 29);
-            this.lblSlot6.TabIndex = 52;
-            this.lblSlot6.Text = "Slot 6";
-            // 
-            // pbSlot6
-            // 
-            this.pbSlot6.Location = new System.Drawing.Point(734, 611);
-            this.pbSlot6.Name = "pbSlot6";
-            this.pbSlot6.Size = new System.Drawing.Size(235, 235);
-            this.pbSlot6.TabIndex = 53;
-            this.pbSlot6.TabStop = false;
+            this.pbSlot5.Location = new System.Drawing.Point(734, 611);
+            this.pbSlot5.Name = "pbSlot5";
+            this.pbSlot5.Size = new System.Drawing.Size(235, 235);
+            this.pbSlot5.TabIndex = 53;
+            this.pbSlot5.TabStop = false;
             // 
             // Form1
             // 
@@ -789,24 +789,24 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateGray;
             this.ClientSize = new System.Drawing.Size(1924, 934);
-            this.Controls.Add(this.pbSlot6);
-            this.Controls.Add(this.lblSlot6);
-            this.Controls.Add(this.lblSlot5);
             this.Controls.Add(this.pbSlot5);
+            this.Controls.Add(this.lblSlot5);
             this.Controls.Add(this.lblSlot4);
             this.Controls.Add(this.pbSlot4);
             this.Controls.Add(this.lblSlot3);
             this.Controls.Add(this.pbSlot3);
             this.Controls.Add(this.lblSlot2);
             this.Controls.Add(this.pbSlot2);
+            this.Controls.Add(this.lblSlot1);
+            this.Controls.Add(this.pbSlot1);
             this.Controls.Add(this.pnlSlotToevoegen);
             this.Controls.Add(this.btnSlotToevoegen);
             this.Controls.Add(this.pnlVeranderNaam);
             this.Controls.Add(this.pnlLogin);
             this.Controls.Add(this.pnlSlotbeheer);
             this.Controls.Add(this.btnVeranderNaamSlot);
-            this.Controls.Add(this.pbSlot1);
-            this.Controls.Add(this.lblSlot1);
+            this.Controls.Add(this.pbSlot0);
+            this.Controls.Add(this.lblSlot0);
             this.Controls.Add(this.lblOverzicht);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -814,7 +814,7 @@
             this.Name = "Form1";
             this.Text = "Smart Lock";
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbSlot1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSlot0)).EndInit();
             this.pnlSlotbeheer.ResumeLayout(false);
             this.pnlSlotbeheer.PerformLayout();
             this.pnlRegister.ResumeLayout(false);
@@ -825,11 +825,11 @@
             this.pnlVeranderNaam.PerformLayout();
             this.pnlSlotToevoegen.ResumeLayout(false);
             this.pnlSlotToevoegen.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbSlot1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlot2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlot3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlot4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlot5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbSlot6)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -844,9 +844,9 @@
         private System.Windows.Forms.Label lblWachtwoord;
         private System.Windows.Forms.Button btnEnter;
         private System.Windows.Forms.Label lblOverzicht;
-        private System.Windows.Forms.Label lblSlot1;
+        private System.Windows.Forms.Label lblSlot0;
         private System.Windows.Forms.BindingSource bindingSource1;
-        private System.Windows.Forms.PictureBox pbSlot1;
+        private System.Windows.Forms.PictureBox pbSlot0;
         private System.Windows.Forms.Label lblWelkomRegister;
         private System.Windows.Forms.Label lblRegistreerHier;
         private System.Windows.Forms.TextBox tbNieuweGebruikersnaam;
@@ -892,16 +892,16 @@
         private System.Windows.Forms.Button btnExtraSlot3;
         private System.Windows.Forms.Button btnExtraSlot2;
         private System.Windows.Forms.Button btnExtraSlot1;
+        private System.Windows.Forms.PictureBox pbSlot1;
+        private System.Windows.Forms.Label lblSlot1;
         private System.Windows.Forms.PictureBox pbSlot2;
         private System.Windows.Forms.Label lblSlot2;
         private System.Windows.Forms.PictureBox pbSlot3;
         private System.Windows.Forms.Label lblSlot3;
         private System.Windows.Forms.PictureBox pbSlot4;
         private System.Windows.Forms.Label lblSlot4;
-        private System.Windows.Forms.PictureBox pbSlot5;
         private System.Windows.Forms.Label lblSlot5;
-        private System.Windows.Forms.Label lblSlot6;
-        private System.Windows.Forms.PictureBox pbSlot6;
+        private System.Windows.Forms.PictureBox pbSlot5;
     }
 }
 
