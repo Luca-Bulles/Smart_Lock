@@ -264,7 +264,11 @@ namespace SmartLock
                 while (true)
                 {
                     Thread.Sleep(10000);
-                    //State_slot();
+                    for (int i = 0; i < slots.Count; i++)
+                    {
+                        State_slot(i);
+                    }
+                    
                 }
             }
             //Exceptionhandling als de connectie verbreekt
@@ -272,7 +276,7 @@ namespace SmartLock
         }
 
         //State opvragen van het slot bij de server
-        void State_slot1(int slotnummer)
+        void State_slot(int slotnummer)
         {
             Tuple<String, String> messages = slots[slotnummer].state_slot(Sock);
             string message = messages.Item1;
@@ -459,7 +463,6 @@ namespace SmartLock
             Show_Login(false);
             Show_Register(false);
         }
-
         //Klikken op slot 0 voor de naam te veranderen
         private void BtnNaamSlot0_Click(object sender, EventArgs e)
         {
@@ -516,7 +519,6 @@ namespace SmartLock
         {
            // Add_Slot2();
         }
-
         private void BtnExtraSlot1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Dit slot is al toegevoegd!\nKies een ander slot!");
