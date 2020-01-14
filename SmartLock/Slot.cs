@@ -98,9 +98,22 @@ namespace SmartLock
 
             return message;
         }
-
-        public string change_name( Socket Sock)
+        public string change_name(Socket Sock, string slotNaam, int slotnummer)
         {
+            //bericht naar de server sturen
+            string msg = "CHANGENAME " + slotnummer;
+            byte[] sendBuffer = Encoding.Default.GetBytes(msg);
+            Sock.Send(sendBuffer);
+
+            byte[] nameBuffer = Encoding.Default.GetBytes(slotNaam);
+            Sock.Send(nameBuffer);
+
+            //bericht ontvangen van de server
+            byte[] changeNameBuffer = new byte[1024];
+            int rec = Sock.Receive(changeNameBuffer, 0, changeNameBuffer.Length, 0);
+
+            Array.Resize(ref changeNameBuffer, rec);
+            string message = Encoding.Default.GetString(changeNameBuffer);
 
             return message;
         }

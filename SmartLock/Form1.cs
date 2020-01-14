@@ -21,6 +21,7 @@ namespace SmartLock
         List<Slot> slots = new List<Slot>();
         List<PictureBox> pbslots = new List<PictureBox>();
         List<Label> lblslots = new List<Label>();
+        int verandernaamnummer;
         public Form1()
         {
             InitializeComponent();
@@ -129,8 +130,8 @@ namespace SmartLock
         void Show_Slotbeheer(bool state)
         {
             pnlSlotbeheer.Visible = state;
+            btnNaamSlot0.Visible = state;
             btnNaamSlot1.Visible = state;
-            btnNaamSlot2.Visible = state;
             btnNaamSlot3.Visible = state;
             btnNaamSlot4.Visible = state;
             btnNaamSlot5.Visible = state;
@@ -323,27 +324,14 @@ namespace SmartLock
             }
         }
 
-        void Change_name(string slotNaam)
+        void Change_name(string slotNaam, int slotnummer)
         {
-            //bericht naar de server sturen
-            string msg = "CHANGENAME";
-            byte[] sendBuffer = Encoding.Default.GetBytes(msg);
-            Sock.Send(sendBuffer);
-
-            byte[] nameBuffer = Encoding.Default.GetBytes(slotNaam);
-            Sock.Send(nameBuffer);
-
-            //bericht ontvangen van de server
-            byte[] changeNameBuffer = new byte[1024];
-            int rec = Sock.Receive(changeNameBuffer, 0, changeNameBuffer.Length, 0);
-
-            Array.Resize(ref changeNameBuffer, rec);
-            string message = Encoding.Default.GetString(changeNameBuffer);
+            string message = slots[slotnummer].change_name(Sock, slotNaam, slotnummer);
 
             if (message == "CHANGE SUCCEEDED")
             {
                 MessageBox.Show("Naam is gewijzigd");
-                lblSlot0.Text = slotNaam;
+                lblslots[slotnummer].Text = slotNaam;
                 
             }
             else if (message == "CHANGE FAILED")
@@ -453,11 +441,12 @@ namespace SmartLock
         private void BtnNaamSlot1_Click(object sender, EventArgs e)
         {
             Show_VeranderNaam(true);
+            verandernaamnummer = 0;
         }
 
         private void BtnNieuweNaamOpslaan_Click(object sender, EventArgs e)
         {
-            Change_name(tbVeranderNaam.Text);
+            Change_name(tbVeranderNaam.Text, verandernaamnummer);
         }
         //Sluiten van het scherm om het wachtwoord te wijzigen
         private void BtnCloseNieuweNaam_Click(object sender, EventArgs e)
@@ -478,6 +467,11 @@ namespace SmartLock
         private void BtnExtraSlot1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Dit slot is al toegevoegd!\nKies een ander slot!");
+        }
+
+        private void BtnNaamSlot2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
