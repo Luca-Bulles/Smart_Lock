@@ -132,10 +132,10 @@ namespace SmartLock
             pnlSlotbeheer.Visible = state;
             btnNaamSlot0.Visible = state;
             btnNaamSlot1.Visible = state;
+            btnNaamSlot2.Visible = state;
             btnNaamSlot3.Visible = state;
             btnNaamSlot4.Visible = state;
             btnNaamSlot5.Visible = state;
-            btnNaamSlot6.Visible = state;
             lblHierNaamSlotaanpassen.Visible = state;
         }
 
@@ -437,13 +437,43 @@ namespace SmartLock
             Show_Register(false);
         }
 
-        //Klikken op slot 1 voor de naam te veranderen
-        private void BtnNaamSlot1_Click(object sender, EventArgs e)
+        //Klikken op slot 0 voor de naam te veranderen
+        private void BtnNaamSlot0_Click(object sender, EventArgs e)
         {
             Show_VeranderNaam(true);
             verandernaamnummer = 0;
         }
-
+        //klikken op slot 1 voor de naam te veranderen
+        private void BtnNaamSlot1_Click(object sender, EventArgs e)
+        {
+            Show_VeranderNaam(true);
+            verandernaamnummer = 1;
+        }
+        //klikken op slot 2 voor de naam te veranderen
+        private void BtnNaamSlot2_Click(object sender, EventArgs e)
+        {
+            Show_VeranderNaam(true);
+            verandernaamnummer = 2;
+        }
+        //klikken op slot 3 voor de naam te veranderen
+        private void BtnNaamSlot3_Click(object sender, EventArgs e)
+        {
+            Show_VeranderNaam(true);
+            verandernaamnummer = 3;
+        }
+        //klikken op slot 4 voor de naam te veranderen
+        private void BtnNaamSlot4_Click(object sender, EventArgs e)
+        {
+            Show_VeranderNaam(true);
+            verandernaamnummer = 4;
+        }
+        //klikken op slot 5 voor de naam te veranderen
+        private void BtnNaamSlot5_Click(object sender, EventArgs e)
+        {
+            Show_VeranderNaam(true);
+            verandernaamnummer = 5;
+        }
+        //Button voor op te slaan van de naamwijziging
         private void BtnNieuweNaamOpslaan_Click(object sender, EventArgs e)
         {
             Change_name(tbVeranderNaam.Text, verandernaamnummer);
@@ -469,9 +499,5 @@ namespace SmartLock
             MessageBox.Show("Dit slot is al toegevoegd!\nKies een ander slot!");
         }
 
-        private void BtnNaamSlot2_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

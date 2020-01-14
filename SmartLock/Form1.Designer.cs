@@ -56,12 +56,10 @@
             this.btnTerug = new System.Windows.Forms.Button();
             this.btnVeranderNaamSlot = new System.Windows.Forms.Button();
             this.lblHierNaamSlotaanpassen = new System.Windows.Forms.Label();
-            this.btnNaamSlot0 = new System.Windows.Forms.Button();
-            this.btnNaamSlot4 = new System.Windows.Forms.Button();
-            this.btnNaamSlot1 = new System.Windows.Forms.Button();
-            this.btnNaamSlot5 = new System.Windows.Forms.Button();
-            this.btnNaamSlot6 = new System.Windows.Forms.Button();
             this.btnNaamSlot3 = new System.Windows.Forms.Button();
+            this.btnNaamSlot4 = new System.Windows.Forms.Button();
+            this.btnNaamSlot5 = new System.Windows.Forms.Button();
+            this.btnNaamSlot2 = new System.Windows.Forms.Button();
             this.pnlSlotbeheer = new System.Windows.Forms.Panel();
             this.btnCloseVeranderNaam = new System.Windows.Forms.Button();
             this.pnlRegister = new System.Windows.Forms.Panel();
@@ -95,6 +93,8 @@
             this.lblSlot4 = new System.Windows.Forms.Label();
             this.lblSlot5 = new System.Windows.Forms.Label();
             this.pbSlot5 = new System.Windows.Forms.PictureBox();
+            this.btnNaamSlot0 = new System.Windows.Forms.Button();
+            this.btnNaamSlot1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlot0)).BeginInit();
             this.pnlSlotbeheer.SuspendLayout();
@@ -367,74 +367,58 @@
             this.lblHierNaamSlotaanpassen.TabIndex = 30;
             this.lblHierNaamSlotaanpassen.Text = "Hier kun je de namen van je sloten aanpassen";
             // 
-            // btnNaamSlot0
+            // btnNaamSlot3
             // 
-            this.btnNaamSlot0.Location = new System.Drawing.Point(48, 122);
-            this.btnNaamSlot0.Name = "btnNaamSlot0";
-            this.btnNaamSlot0.Size = new System.Drawing.Size(153, 93);
-            this.btnNaamSlot0.TabIndex = 31;
-            this.btnNaamSlot0.Text = "Slot 0";
-            this.btnNaamSlot0.UseVisualStyleBackColor = true;
-            this.btnNaamSlot0.Click += new System.EventHandler(this.BtnNaamSlot1_Click);
+            this.btnNaamSlot3.Location = new System.Drawing.Point(48, 266);
+            this.btnNaamSlot3.Name = "btnNaamSlot3";
+            this.btnNaamSlot3.Size = new System.Drawing.Size(153, 93);
+            this.btnNaamSlot3.TabIndex = 32;
+            this.btnNaamSlot3.Text = "Slot 3";
+            this.btnNaamSlot3.UseVisualStyleBackColor = true;
+            this.btnNaamSlot3.Click += new System.EventHandler(this.BtnNaamSlot3_Click);
             // 
             // btnNaamSlot4
             // 
-            this.btnNaamSlot4.Location = new System.Drawing.Point(48, 266);
+            this.btnNaamSlot4.Location = new System.Drawing.Point(257, 266);
             this.btnNaamSlot4.Name = "btnNaamSlot4";
             this.btnNaamSlot4.Size = new System.Drawing.Size(153, 93);
-            this.btnNaamSlot4.TabIndex = 32;
+            this.btnNaamSlot4.TabIndex = 35;
             this.btnNaamSlot4.Text = "Slot 4";
             this.btnNaamSlot4.UseVisualStyleBackColor = true;
-            // 
-            // btnNaamSlot1
-            // 
-            this.btnNaamSlot1.Location = new System.Drawing.Point(257, 121);
-            this.btnNaamSlot1.Name = "btnNaamSlot1";
-            this.btnNaamSlot1.Size = new System.Drawing.Size(153, 93);
-            this.btnNaamSlot1.TabIndex = 34;
-            this.btnNaamSlot1.Text = "Slot 1";
-            this.btnNaamSlot1.UseVisualStyleBackColor = true;
-            this.btnNaamSlot1.Click += new System.EventHandler(this.BtnNaamSlot2_Click);
+            this.btnNaamSlot4.Click += new System.EventHandler(this.BtnNaamSlot4_Click);
             // 
             // btnNaamSlot5
             // 
-            this.btnNaamSlot5.Location = new System.Drawing.Point(257, 266);
+            this.btnNaamSlot5.Location = new System.Drawing.Point(486, 266);
             this.btnNaamSlot5.Name = "btnNaamSlot5";
             this.btnNaamSlot5.Size = new System.Drawing.Size(153, 93);
-            this.btnNaamSlot5.TabIndex = 35;
+            this.btnNaamSlot5.TabIndex = 36;
             this.btnNaamSlot5.Text = "Slot 5";
             this.btnNaamSlot5.UseVisualStyleBackColor = true;
+            this.btnNaamSlot5.Click += new System.EventHandler(this.BtnNaamSlot5_Click);
             // 
-            // btnNaamSlot6
+            // btnNaamSlot2
             // 
-            this.btnNaamSlot6.Location = new System.Drawing.Point(486, 266);
-            this.btnNaamSlot6.Name = "btnNaamSlot6";
-            this.btnNaamSlot6.Size = new System.Drawing.Size(153, 93);
-            this.btnNaamSlot6.TabIndex = 36;
-            this.btnNaamSlot6.Text = "Slot 6";
-            this.btnNaamSlot6.UseVisualStyleBackColor = true;
-            // 
-            // btnNaamSlot3
-            // 
-            this.btnNaamSlot3.Location = new System.Drawing.Point(486, 121);
-            this.btnNaamSlot3.Name = "btnNaamSlot3";
-            this.btnNaamSlot3.Size = new System.Drawing.Size(153, 93);
-            this.btnNaamSlot3.TabIndex = 37;
-            this.btnNaamSlot3.Text = "Slot 3";
-            this.btnNaamSlot3.UseVisualStyleBackColor = true;
+            this.btnNaamSlot2.Location = new System.Drawing.Point(486, 121);
+            this.btnNaamSlot2.Name = "btnNaamSlot2";
+            this.btnNaamSlot2.Size = new System.Drawing.Size(153, 93);
+            this.btnNaamSlot2.TabIndex = 37;
+            this.btnNaamSlot2.Text = "Slot 2";
+            this.btnNaamSlot2.UseVisualStyleBackColor = true;
+            this.btnNaamSlot2.Click += new System.EventHandler(this.BtnNaamSlot2_Click);
             // 
             // pnlSlotbeheer
             // 
             this.pnlSlotbeheer.BackColor = System.Drawing.SystemColors.WindowFrame;
-            this.pnlSlotbeheer.Controls.Add(this.btnCloseVeranderNaam);
-            this.pnlSlotbeheer.Controls.Add(this.btnNaamSlot0);
-            this.pnlSlotbeheer.Controls.Add(this.btnNaamSlot6);
-            this.pnlSlotbeheer.Controls.Add(this.btnNaamSlot3);
-            this.pnlSlotbeheer.Controls.Add(this.btnNaamSlot5);
-            this.pnlSlotbeheer.Controls.Add(this.lblHierNaamSlotaanpassen);
-            this.pnlSlotbeheer.Controls.Add(this.btnNaamSlot4);
             this.pnlSlotbeheer.Controls.Add(this.btnNaamSlot1);
-            this.pnlSlotbeheer.Location = new System.Drawing.Point(45, 114);
+            this.pnlSlotbeheer.Controls.Add(this.btnNaamSlot0);
+            this.pnlSlotbeheer.Controls.Add(this.btnCloseVeranderNaam);
+            this.pnlSlotbeheer.Controls.Add(this.btnNaamSlot5);
+            this.pnlSlotbeheer.Controls.Add(this.btnNaamSlot2);
+            this.pnlSlotbeheer.Controls.Add(this.btnNaamSlot4);
+            this.pnlSlotbeheer.Controls.Add(this.lblHierNaamSlotaanpassen);
+            this.pnlSlotbeheer.Controls.Add(this.btnNaamSlot3);
+            this.pnlSlotbeheer.Location = new System.Drawing.Point(532, 106);
             this.pnlSlotbeheer.Name = "pnlSlotbeheer";
             this.pnlSlotbeheer.Size = new System.Drawing.Size(763, 432);
             this.pnlSlotbeheer.TabIndex = 38;
@@ -464,7 +448,6 @@
             this.pnlRegister.Controls.Add(this.lblNieuwGebruikersnaam);
             this.pnlRegister.Controls.Add(this.btnRegisterGereed);
             this.pnlRegister.Controls.Add(this.lblNieuwWachtwoord);
-            this.pnlRegister.Controls.Add(this.pnlSlotToevoegen);
             this.pnlRegister.Controls.Add(this.btnInloggen);
             this.pnlRegister.Controls.Add(this.lblModelnummer);
             this.pnlRegister.Controls.Add(this.lblBestaandeGebruiker);
@@ -568,7 +551,7 @@
             this.pnlSlotToevoegen.Controls.Add(this.btnExtraSlot3);
             this.pnlSlotToevoegen.Controls.Add(this.btnExtraSlot2);
             this.pnlSlotToevoegen.Controls.Add(this.btnExtraSlot1);
-            this.pnlSlotToevoegen.Location = new System.Drawing.Point(624, 255);
+            this.pnlSlotToevoegen.Location = new System.Drawing.Point(470, 106);
             this.pnlSlotToevoegen.Name = "pnlSlotToevoegen";
             this.pnlSlotToevoegen.Size = new System.Drawing.Size(906, 456);
             this.pnlSlotToevoegen.TabIndex = 43;
@@ -785,6 +768,26 @@
             this.pbSlot5.TabIndex = 53;
             this.pbSlot5.TabStop = false;
             // 
+            // btnNaamSlot0
+            // 
+            this.btnNaamSlot0.Location = new System.Drawing.Point(48, 121);
+            this.btnNaamSlot0.Name = "btnNaamSlot0";
+            this.btnNaamSlot0.Size = new System.Drawing.Size(153, 93);
+            this.btnNaamSlot0.TabIndex = 38;
+            this.btnNaamSlot0.Text = "Slot 0";
+            this.btnNaamSlot0.UseVisualStyleBackColor = true;
+            this.btnNaamSlot0.Click += new System.EventHandler(this.BtnNaamSlot0_Click);
+            // 
+            // btnNaamSlot1
+            // 
+            this.btnNaamSlot1.Location = new System.Drawing.Point(257, 121);
+            this.btnNaamSlot1.Name = "btnNaamSlot1";
+            this.btnNaamSlot1.Size = new System.Drawing.Size(153, 93);
+            this.btnNaamSlot1.TabIndex = 39;
+            this.btnNaamSlot1.Text = "Slot 1";
+            this.btnNaamSlot1.UseVisualStyleBackColor = true;
+            this.btnNaamSlot1.Click += new System.EventHandler(this.BtnNaamSlot1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 20F);
@@ -801,6 +804,7 @@
             this.Controls.Add(this.pbSlot2);
             this.Controls.Add(this.lblSlot1);
             this.Controls.Add(this.pbSlot1);
+            this.Controls.Add(this.pnlSlotToevoegen);
             this.Controls.Add(this.btnSlotToevoegen);
             this.Controls.Add(this.pnlVeranderNaam);
             this.Controls.Add(this.pnlLogin);
@@ -864,12 +868,10 @@
         private System.Windows.Forms.Button btnTerug;
         private System.Windows.Forms.Button btnVeranderNaamSlot;
         private System.Windows.Forms.Label lblHierNaamSlotaanpassen;
-        private System.Windows.Forms.Button btnNaamSlot0;
-        private System.Windows.Forms.Button btnNaamSlot4;
-        private System.Windows.Forms.Button btnNaamSlot1;
-        private System.Windows.Forms.Button btnNaamSlot5;
-        private System.Windows.Forms.Button btnNaamSlot6;
         private System.Windows.Forms.Button btnNaamSlot3;
+        private System.Windows.Forms.Button btnNaamSlot4;
+        private System.Windows.Forms.Button btnNaamSlot5;
+        private System.Windows.Forms.Button btnNaamSlot2;
         private System.Windows.Forms.Panel pnlSlotbeheer;
         private System.Windows.Forms.Panel pnlRegister;
         private System.Windows.Forms.Panel pnlLogin;
@@ -903,6 +905,8 @@
         private System.Windows.Forms.Label lblSlot4;
         private System.Windows.Forms.Label lblSlot5;
         private System.Windows.Forms.PictureBox pbSlot5;
+        private System.Windows.Forms.Button btnNaamSlot1;
+        private System.Windows.Forms.Button btnNaamSlot0;
     }
 }
 
