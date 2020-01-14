@@ -308,7 +308,6 @@ namespace SmartLock
             
             if (message == "LOCKED")
             {
-                //MessageBox.Show("Slot is gesloten");
                 Status_Locked(slotnummer);
             }
         }
@@ -319,7 +318,6 @@ namespace SmartLock
 
             if (message == "UNLOCKED")
             {
-                //MessageBox.Show("Slot is geopend");
                 Status_Unlocked(slotnummer);
             }
         }
@@ -368,7 +366,7 @@ namespace SmartLock
             pbslots[indexnummer].Image = Image.FromFile("D:\\School\\Fontys\\Semester 1\\Software\\Verdieping\\Proftaak\\Afbeeldingen_Software\\Unlocked.jpg");
         }
 
-        //Openen of sluiten van slot1
+        //Openen of sluiten van slot
         void Change_StateSlot(int slotnummer)
         {
             if (state == "LOCKED")
@@ -400,12 +398,37 @@ namespace SmartLock
             lblslots.Add(lblSlot5);
         }
         //----------------------------------------------------------------------- Begin klik functies --------------------------------------------------------------------------------------------------------------
-        //Bevestiging van het openen van het slot
-        private void PbSlot1_Click(object sender, EventArgs e)
+        //Slot 0 openen of sluiten
+        private void PbSlot0_Click(object sender, EventArgs e)
+        {
+            Change_StateSlot(0);
+        }
+        //Slot 1 openen of sluiten
+        private void PbSlot1_Click_1(object sender, EventArgs e)
         {
             Change_StateSlot(1);
-            
         }
+        //Slot 2 openen of sluiten
+        private void PbSlot2_Click(object sender, EventArgs e)
+        {
+            Change_StateSlot(2);
+        }
+        //Slot 3 openen of sluiten
+        private void PbSlot3_Click(object sender, EventArgs e)
+        {
+            Change_StateSlot(3);
+        }
+        //Slot 4 openen of sluiten
+        private void PbSlot4_Click(object sender, EventArgs e)
+        {
+            Change_StateSlot(4);
+        }
+        //Slot 5 openen of sluiten
+        private void PbSlot5_Click(object sender, EventArgs e)
+        {
+            Change_StateSlot(5);
+        }
+
         //Nieuwe gegevens gebruiker verwerken (Regristratie)
         private void BtnRegisterGereed_Click(object sender, EventArgs e)
         {
@@ -498,6 +521,5 @@ namespace SmartLock
         {
             MessageBox.Show("Dit slot is al toegevoegd!\nKies een ander slot!");
         }
-
     }
 }
