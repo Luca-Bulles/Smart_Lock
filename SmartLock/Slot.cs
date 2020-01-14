@@ -25,12 +25,22 @@ namespace SmartLock
         {
             this.slotnummer = slotnummer;
 
-            state_slot(Sock);
             Tuple<String, String> messages = state_slot(Sock);
             this.state = messages.Item1;
             this.nameslot = messages.Item2;
         }
 
+        //properties
+        public string State
+        {
+            get { return state; }
+            set { state = value; }
+        }
+
+        public string Nameslot
+        {
+            get { return nameslot; }
+        }
         public Tuple<String, String> state_slot(Socket Sock)
         {
             //bericht naar de server sturen
@@ -66,7 +76,7 @@ namespace SmartLock
         public string lock_slot(Socket Sock)
         {
             //bericht naar de server sturen
-            string msg = "LOCK";
+            string msg = "LOCK " + slotnummer;
             byte[] sendBuffer = Encoding.Default.GetBytes(msg);
             Sock.Send(sendBuffer);
 
@@ -84,7 +94,7 @@ namespace SmartLock
         public string unlock_slot(Socket Sock)
         {
             //bericht naar de server sturen
-            string msg = "UNLOCK";
+            string msg = "UNLOCK " + slotnummer;
             byte[] sendBuffer = Encoding.Default.GetBytes(msg);
             Sock.Send(sendBuffer);
 
