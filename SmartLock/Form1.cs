@@ -154,7 +154,7 @@ namespace SmartLock
             Sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
             //Verbinding vaststellen
-            IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse("145.93.88.253"), 10000);
+            IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse("145.93.89.206"), 10000);
             Sock.Connect(endPoint);
 
         }
@@ -364,18 +364,18 @@ namespace SmartLock
         }
 
         //----------------------------------------------------------------------- Weergave slot --------------------------------------------------------------------------------------------------------------------
-        //Toon groen slot
+        //Toon gesloten slot
         void Status_Locked(int indexnummer)
         {
             pbslots[indexnummer].SizeMode = PictureBoxSizeMode.StretchImage;
-            pbslots[indexnummer].Image = Image.FromFile("D:\\School\\Fontys\\Semester 1\\Software\\Verdieping\\Proftaak\\Afbeeldingen_Software\\Locked.jpg");
+            pbslots[indexnummer].Image = Image.FromFile("D:\\School\\Fontys\\Semester 1\\Software\\Verdieping\\Proftaak\\Afbeeldingen_Software\\LockedV2.png");
         }
-        //Toon het rode slot
+        //Toon open slot
         void Status_Unlocked(int indexnummer)
         {
             
             pbslots[indexnummer].SizeMode = PictureBoxSizeMode.StretchImage;
-            pbslots[indexnummer].Image = Image.FromFile("D:\\School\\Fontys\\Semester 1\\Software\\Verdieping\\Proftaak\\Afbeeldingen_Software\\Unlocked.jpg");
+            pbslots[indexnummer].Image = Image.FromFile("D:\\School\\Fontys\\Semester 1\\Software\\Verdieping\\Proftaak\\Afbeeldingen_Software\\UnlockedV2.png");
         }
 
         //Openen of sluiten van slot

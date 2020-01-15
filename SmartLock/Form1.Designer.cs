@@ -60,6 +60,8 @@
             this.btnNaamSlot5 = new System.Windows.Forms.Button();
             this.btnNaamSlot2 = new System.Windows.Forms.Button();
             this.pnlSlotbeheer = new System.Windows.Forms.Panel();
+            this.btnNaamSlot1 = new System.Windows.Forms.Button();
+            this.btnNaamSlot0 = new System.Windows.Forms.Button();
             this.btnCloseVeranderNaam = new System.Windows.Forms.Button();
             this.pnlRegister = new System.Windows.Forms.Panel();
             this.pnlLogin = new System.Windows.Forms.Panel();
@@ -92,8 +94,6 @@
             this.lblSlot4 = new System.Windows.Forms.Label();
             this.lblSlot5 = new System.Windows.Forms.Label();
             this.pbSlot5 = new System.Windows.Forms.PictureBox();
-            this.btnNaamSlot0 = new System.Windows.Forms.Button();
-            this.btnNaamSlot1 = new System.Windows.Forms.Button();
             this.pbSlot0 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.pnlSlotbeheer.SuspendLayout();
@@ -413,6 +413,26 @@
             this.pnlSlotbeheer.Name = "pnlSlotbeheer";
             this.pnlSlotbeheer.Size = new System.Drawing.Size(763, 432);
             this.pnlSlotbeheer.TabIndex = 38;
+            // 
+            // btnNaamSlot1
+            // 
+            this.btnNaamSlot1.Location = new System.Drawing.Point(257, 121);
+            this.btnNaamSlot1.Name = "btnNaamSlot1";
+            this.btnNaamSlot1.Size = new System.Drawing.Size(153, 93);
+            this.btnNaamSlot1.TabIndex = 39;
+            this.btnNaamSlot1.Text = "Slot 1";
+            this.btnNaamSlot1.UseVisualStyleBackColor = true;
+            this.btnNaamSlot1.Click += new System.EventHandler(this.BtnNaamSlot1_Click);
+            // 
+            // btnNaamSlot0
+            // 
+            this.btnNaamSlot0.Location = new System.Drawing.Point(48, 121);
+            this.btnNaamSlot0.Name = "btnNaamSlot0";
+            this.btnNaamSlot0.Size = new System.Drawing.Size(153, 93);
+            this.btnNaamSlot0.TabIndex = 38;
+            this.btnNaamSlot0.Text = "Slot 0";
+            this.btnNaamSlot0.UseVisualStyleBackColor = true;
+            this.btnNaamSlot0.Click += new System.EventHandler(this.BtnNaamSlot0_Click);
             // 
             // btnCloseVeranderNaam
             // 
@@ -763,26 +783,6 @@
             this.pbSlot5.TabIndex = 53;
             this.pbSlot5.TabStop = false;
             this.pbSlot5.Click += new System.EventHandler(this.PbSlot5_Click);
-            // 
-            // btnNaamSlot0
-            // 
-            this.btnNaamSlot0.Location = new System.Drawing.Point(48, 121);
-            this.btnNaamSlot0.Name = "btnNaamSlot0";
-            this.btnNaamSlot0.Size = new System.Drawing.Size(153, 93);
-            this.btnNaamSlot0.TabIndex = 38;
-            this.btnNaamSlot0.Text = "Slot 0";
-            this.btnNaamSlot0.UseVisualStyleBackColor = true;
-            this.btnNaamSlot0.Click += new System.EventHandler(this.BtnNaamSlot0_Click);
-            // 
-            // btnNaamSlot1
-            // 
-            this.btnNaamSlot1.Location = new System.Drawing.Point(257, 121);
-            this.btnNaamSlot1.Name = "btnNaamSlot1";
-            this.btnNaamSlot1.Size = new System.Drawing.Size(153, 93);
-            this.btnNaamSlot1.TabIndex = 39;
-            this.btnNaamSlot1.Text = "Slot 1";
-            this.btnNaamSlot1.UseVisualStyleBackColor = true;
-            this.btnNaamSlot1.Click += new System.EventHandler(this.BtnNaamSlot1_Click);
             // 
             // pbSlot0
             // 
