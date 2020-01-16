@@ -20,6 +20,7 @@ namespace SmartLock
         List<Slot> slots = new List<Slot>();
         List<PictureBox> pbslots = new List<PictureBox>();
         List<Label> lblslots = new List<Label>();
+        List<Button> naamslots = new List<Button>();
         int verandernaamnummer;
         public Form1()
         {
@@ -33,6 +34,7 @@ namespace SmartLock
             pnlSlotToevoegen.Visible = false;
             Pbslots_List();
             Lblslots_Lists();
+            Naamslots_Lists();
 
             //tijdelijk verbergen van de extra sloten
             Show_Slot1(false);
@@ -154,7 +156,7 @@ namespace SmartLock
             Sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
             //Verbinding vaststellen
-            IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse("145.93.89.206"), 10000);
+            IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse("145.93.89.72"), 10000);
             Sock.Connect(endPoint);
 
         }
@@ -342,6 +344,7 @@ namespace SmartLock
             {
                 MessageBox.Show("Naam is gewijzigd");
                 lblslots[slotnummer].Text = slotNaam;
+                naamslots[slotnummer].Text = slotNaam;
                 
             }
             else if (message == "CHANGE FAILED")
@@ -408,6 +411,15 @@ namespace SmartLock
             lblslots.Add(lblSlot3);
             lblslots.Add(lblSlot4);
             lblslots.Add(lblSlot5);
+        }
+        void Naamslots_Lists()
+        {
+            naamslots.Add(btnNaamSlot0);
+            naamslots.Add(btnNaamSlot1);
+            naamslots.Add(btnNaamSlot2);
+            naamslots.Add(btnNaamSlot3);
+            naamslots.Add(btnNaamSlot4);
+            naamslots.Add(btnNaamSlot5);
         }
         //----------------------------------------------------------------------- Begin klik functies --------------------------------------------------------------------------------------------------------------
         //Slot 0 openen of sluiten
