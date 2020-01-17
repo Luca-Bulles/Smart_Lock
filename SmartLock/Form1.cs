@@ -35,6 +35,7 @@ namespace SmartLock
             Pbslots_List();
             Lblslots_Lists();
             Naamslots_Lists();
+            pnlVeranderNaam.BringToFront();
 
             //tijdelijk verbergen van de extra sloten
             Show_Slot1(false);
@@ -156,7 +157,7 @@ namespace SmartLock
             Sock = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
             //Verbinding vaststellen
-            IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse("145.93.89.72"), 10000);
+            IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse("192.168.43.96"), 10000);
             Sock.Connect(endPoint);
 
         }
@@ -245,6 +246,7 @@ namespace SmartLock
                 pbslots[i].Visible = true;
                 lblslots[i].Visible = true;
                 lblslots[i].Text = slot.Nameslot;
+                naamslots[i].Text = slot.Nameslot;
 
                 if (slot.State == "LOCKED")
                 {
@@ -312,7 +314,8 @@ namespace SmartLock
             {
                 MessageBox.Show("Naam " + lblSlot0.Text + " is gewijzigd naar: " + nameMessage);
                 lblslots[slotnummer].Text = nameMessage;
-            }            
+                naamslots[slotnummer].Text = nameMessage;
+            }
         }
 
         //Slot afsluiten

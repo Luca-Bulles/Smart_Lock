@@ -491,7 +491,7 @@
             this.pnlVeranderNaam.Controls.Add(this.btnNieuweNaamOpslaan);
             this.pnlVeranderNaam.Controls.Add(this.tbVeranderNaam);
             this.pnlVeranderNaam.Controls.Add(this.lblVoerNaamSlotIn);
-            this.pnlVeranderNaam.Location = new System.Drawing.Point(650, 200);
+            this.pnlVeranderNaam.Location = new System.Drawing.Point(663, 564);
             this.pnlVeranderNaam.Name = "pnlVeranderNaam";
             this.pnlVeranderNaam.Size = new System.Drawing.Size(468, 204);
             this.pnlVeranderNaam.TabIndex = 41;
@@ -799,8 +799,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateGray;
             this.ClientSize = new System.Drawing.Size(1924, 934);
-            this.Controls.Add(this.pnlVeranderNaam);
             this.Controls.Add(this.pnlSlotbeheer);
+            this.Controls.Add(this.pnlVeranderNaam);
             this.Controls.Add(this.pbSlot5);
             this.Controls.Add(this.lblSlot5);
             this.Controls.Add(this.lblSlot4);
