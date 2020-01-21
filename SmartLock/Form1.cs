@@ -317,7 +317,6 @@ namespace SmartLock
                 naamslots[slotnummer].Text = nameMessage;
             }
         }
-
         //Slot afsluiten
         void Lock_Slot(int slotnummer)
         {
